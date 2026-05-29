@@ -2,22 +2,22 @@ import { createSlice , createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios"
 
 export const fetchStudents = createAsyncThunk("students/fetchStudents",async()=>{
-    const response = await axios.get("http://localhost:3000/students")
+    const response = await axios.get("https://student-management-system-backend-u5xo.onrender.com/students")
     console.log(response);
     return response.data
 })
 export const addStudentAsync = createAsyncThunk("students/addStudent",async(newStudent)=>{
-    const res = await axios.post("http://localhost:3000/students",newStudent)
+    const res = await axios.post("https://student-management-system-backend-u5xo.onrender.com/students",newStudent)
     console.log(res)
     return res.data
 })
 export const updateStudentAsync = createAsyncThunk("students/updateStudent",async({id,updatedStudent})=>{
-    const res = await axios.post(`http://localhost:3000/students/${id}`,updatedStudent)
+    const res = await axios.post(`https://student-management-system-backend-u5xo.onrender.com/students/${id}`,updatedStudent)
     console.log(res)
     return res.data
 })
 export const deleteStudentAsync = createAsyncThunk("students/deleteStudent",async(id)=>{
-    await axios.delete(`http://localhost:3000/students/${id}`)
+    await axios.delete(`https://student-management-system-backend-u5xo.onrender.com/students/${id}`)
     return id
 })
 const initialState={
