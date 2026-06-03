@@ -4,25 +4,31 @@ import { useState } from 'react'
 // import heroImg from './assets/hero.png'
 // import './App.css'
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
+import { Navigate } from 'react-router-dom'
 import Navbar from "./component/Navbar"
 import StudentView from './component/StudentView'
 import StudentForm from './component/StudentForm'
 import StudentDetails from './component/StudentDetails'
 import ClassView from './component/ClassView'
 import SchoolView from './component/SchoolView'
+import Auth from "./component/Auth"
+import ProtectedRoute from './component/ProtectedRoute'
+import { useSelector } from 'react-redux'
 
 function App() {
+  const {isAuthenticated} = useSelector((state)=>state.auth)
   return (
     <Router>
-      <Navbar />
+      {isAuthenticated && <Navbar />}
       <Routes>
-        <Route path="/" element={<StudentView/>} />
-        <Route path="/students" element={<StudentView/>} />
-        <Route path="/add-student" element={<StudentForm/>}/>
-        <Route path="/edit-student" element={<StudentForm/>} />
-        <Route path="/details/:id" element={<StudentDetails />} />
-        <Route path="/classes" element={<ClassView/>}/>
-        <Route path="/schools"element={<SchoolView/>}/>
+        <Route path="/login" element={<Auth />}/>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/students" element={<ProtectedRoute><StudentView/></ProtectedRoute>} />
+        <Route path="/add-student" element={<ProtectedRoute><StudentForm/></ProtectedRoute>}/>
+        <Route path="/edit-student" element={<ProtectedRoute><StudentForm/></ProtectedRoute>} />
+        <Route path="/details/:id" element={<ProtectedRoute><StudentDetails /></ProtectedRoute>} />
+        <Route path="/classes" element={<ProtectedRoute><ClassView/></ProtectedRoute>}/>
+        <Route path="/schools"element={<ProtectedRoute><SchoolView/></ProtectedRoute>}/> 
       </Routes>
     </Router>
   )
