@@ -21,8 +21,11 @@ function App() {
     <Router>
       {isAuthenticated && <Navbar />}
       <Routes>
-        <Route path="/login" element={<Auth />}/>
+        <Route path="/login" element={isAuthenticated ? <Navigate to="/students"/> : <Auth/>}/>
+        <Route path="/register" element={isAuthenticated ? <Navigate to="/students"/> :<Auth/>}/>
+        {/* default route */}
         <Route path="/" element={<Navigate to="/login" />} />
+        {/* protected routes */}
         <Route path="/students" element={<ProtectedRoute><StudentView/></ProtectedRoute>} />
         <Route path="/add-student" element={<ProtectedRoute><StudentForm/></ProtectedRoute>}/>
         <Route path="/edit-student" element={<ProtectedRoute><StudentForm/></ProtectedRoute>} />

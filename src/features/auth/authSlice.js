@@ -43,6 +43,7 @@ const authSlice = createSlice({
         // register
         builder.addCase(registerUser.pending,(state)=>{
             state.status = "Loading"
+            state.error = null
         })
         builder.addCase(registerUser.fulfilled,(state)=>{
             state.status = "succeeded"
