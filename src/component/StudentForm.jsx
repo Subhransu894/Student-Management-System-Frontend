@@ -55,7 +55,12 @@ const StudentForm =()=>{
                                 <div className="mb-3">
                                     <label className="form-label">Grade:</label>
                                     <br />
-                                    <input type="text" placeholder="Grade" value={grade} onChange={(e)=>setGrade(e.target.value)} required/>
+                                    <input type="text" placeholder="Grade" value={grade} onChange={(e)=>{
+                                        const value = e.target.value.toUpperCase()
+                                        if(/^[OA-F]?\+?$/.test(value)){
+                                            setGrade(value)
+                                        }
+                                    }} required/>
                                 </div>
                                 <div className="mb-3">
                                     <label className="form-label">Marks:</label>
