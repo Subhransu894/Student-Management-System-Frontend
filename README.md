@@ -7,7 +7,7 @@ Built with React frontend with Redux Toolkit for state management , Express/Node
 
 ## Demo Link
 
-[Live Demo](student-management-system-frontend-seven.vercel.app)
+[Live Demo](https://student-management-system-frontend-seven.vercel.app/login)
 
 ---
 
@@ -23,12 +23,12 @@ npm run dev or # or `npm start` / `npm yarn`
 ---
 
 ## Technologies
--React JS
--Redux Toolkit
--Node Js
--Express
--MongoDB
--JWT
+- React JS
+- Redux Toolkit
+- Node Js
+- Express
+- MongoDB
+- JWT
 
 ---
 
